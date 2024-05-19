@@ -9,7 +9,7 @@
 
 (define (divides? a b) (= (remainder b a) 0))
 
-(define (smallest-divisor n) (find-divisor 2 n))
+(define (smallest-divisor n) (find-divisor n 2))
 
 (define (prime? n)
     (and(= n (smallest-divisor n))
@@ -43,10 +43,22 @@
 (define (sum a b) (+ a b))
 (define (prod a b) (* a b))
 
+(define (gcd a b)
+    (if (= b 0)
+    a
+    (gcd b (remainder a b)))
+)
+
 (define (sum-prime-squares a b)
     (filtered-accumulate prime? sum 0 square a next b)
 )
 
+(define (prod-relatively-prime n)
+    (define (relative-prime i)
+    (= (gcd i n) 1))
+    (filtered-accumulate relative-prime prod 1 identity 1 next n)
+)
+
 (sum-prime-squares 1 10)
 
-
+(prod-relatively-prime 10)
