@@ -1,4 +1,4 @@
-;Simpson's Rule for calculating integrals with iterative sum
+;Prod function for calculating pi and factorial iterative + recursive
 #lang sicp
 
 (define (prod term a next b)
@@ -7,6 +7,11 @@
         result
         (iter (next a) (* result (term a)))))
     (iter a 1))
+
+(define (prod-rec term a next b)
+        (if (> a b)
+        1
+        (* (term a) (prod-rec term (next a) next b))))
 
 (define (next a)
     (+ a 1))
@@ -28,4 +33,12 @@
         (prod square 3 next (+ n 3))))
         )
 
-(pi 100000)
+(define (pi-rec n)
+    (define (next a)
+        (+ a 1 1))
+    (* 8 (/ (* (prod-rec square 4 next (+ n 2)) (+ n 2))
+        (prod-rec square 3 next (+ n 3))))
+        )
+
+(pi 1000)
+(pi-rec 1000)
