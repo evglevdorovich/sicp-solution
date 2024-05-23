@@ -1,11 +1,16 @@
 ;continued fraction with recursive and iterative process
 #lang sicp
 
+
 (define (cont-frac n d k)
-  (if (= k 1)
-    (/ (n k) (d k))
-    (/ (n k) (+ (d k) (cont-frac n d (- k 1))))
-  ))
+  (define (cont-frac-rec i)
+  (if (= i k)
+      (/ (n i) (d i))
+      (/ (n i) (+ (d i) (cont-frac-rec n d (+ i 1))))
+    )
+ )
+ (cont-frac-rec 1)
+)
 
 (define (cont-frac-iter n d k)
   (define (cont-frac-iter i result)
