@@ -19,7 +19,7 @@
           (cont-frac-iter (- i 1) (/ (n (- i 1)) (+ (d (- i 1)) result)))
         )
   )
-  (cont-frac-iter k (/ (n 1) (d 1)))
+  (cont-frac-iter k (/ (n k) (d k)))
 )
 
 (cont-frac-iter (lambda (i) 1.0)
