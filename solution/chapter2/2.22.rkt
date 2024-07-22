@@ -13,3 +13,7 @@
     (display x))
     (list 57 321 88)
 )
+
+(define (cur pair)
+(pair `cur)
+)
