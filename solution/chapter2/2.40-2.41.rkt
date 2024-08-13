@@ -25,7 +25,7 @@
 (define (accumulate op initial sequence)
     (if (null? sequence) initial
         (op (car sequence)
-        (accumulate op initial (cdr sequence))
+        (accumulate op initial (cdr sequence))0
         )
     )
 )
@@ -64,18 +64,16 @@
     (flatmap (lambda (i)
                             (flatmap (lambda (j)
                                  (map (lambda (k) (list i j k))
-                                 (enumerate-interval 1 (- j 1))
+                                    (enumerate-interval 1 (- j 1))
                                  )
                                  )
-                                (enumerate-interval 1 (- i 1))
+                                    (enumerate-interval 1 (- i 1))
                             )
                         ) (enumerate-interval 1 n))
 )
 
-(define (prime-sum-pairs n)
-    (map make-pair-sum
-                (filter prime-sum? (unique-pairs n))
+(define (make-triple-sum n sum)
+    (let ((triples (unique-triples n)))
+        (filter (lambda (triple) (= sum (+ (car triple) (cadr triple) (caddr triple)))) triples)
     )
 )
-
-(permutations (list 1 2 3))
