@@ -76,6 +76,7 @@ right
 )
 
 ;2.68
+;redo
 (define (encode-symbol symb tree)
     (if (leaf? tree) '()
         (cond ((correct-branch? symb (left-branch tree))  (cons '0 (encode-symbol symb (left-branch tree))))
@@ -100,6 +101,7 @@ right
 (successive-merge (make-leaf-set pairs)))
 
 ;2.69
+;redo
 (define (successive-merge leaf-set)
     (cond ((null? (cdr leaf-set)) (car leaf-set))
           (else (successive-merge (adjoin-set (make-code-tree (car leaf-set) (cadr leaf-set)) (cddr leaf-set))))
