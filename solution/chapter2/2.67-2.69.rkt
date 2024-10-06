@@ -108,3 +108,6 @@ right
 
 
 (generate-huffman-tree '((A 4) (B 2) (C 1) (D 1)))
+
+;2.70
+(generate-huffman-tree '((A 2) (BOOM 1) (GET 2) (JOB 2) (SHA 3) (NA 16) (WAH 1) (YIP 9)))
